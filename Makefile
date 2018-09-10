@@ -1,4 +1,4 @@
-.PHONY: build publish
+.PHONY: build publish test
 
 build:
 	python setup.py sdist bdist_wheel
