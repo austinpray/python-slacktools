@@ -13,7 +13,7 @@ def read(*names, **kwargs):
         return fp.read()
 
 
-long_description = read('README.md')
+long_description = read('README.rst')
 
 
 def find_version(*file_paths):
@@ -28,7 +28,6 @@ setup(name='slacktools',
       version=find_version('slacktools', 'version.py'),
       description='Toolbelt for Slack API clients for Web API and RTM API',
       long_description=long_description,
-      long_description_content_type="text/markdown",
       url='https://github.com/austinpray/python-slacktools',
       author='Austin Pray',
       author_email='austin@austinpray.com',
