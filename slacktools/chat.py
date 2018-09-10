@@ -15,7 +15,7 @@ def reply(slack_client, message: dict, text: str):
     """Takes a message from some channel and chat.postMessage some text back with a user mention prepended"""
     return slack_client.api_call("chat.postMessage",
                                  channel=message['channel'],
-                                 text=f"{format_slack_mention(message['user'])} {text}",
+                                 text="{} {}".format(format_slack_mention(message['user']), text),
                                  as_user=True)
 
 

@@ -34,14 +34,14 @@ def verify_signature(slack_signing_secret: str,
         raise ValueError('signature not provided')
     if not slack_signature.startswith('v0'):
         raise SignatureVersionException(
-            f"expected the signature to be version 'v0' but got '{slack_signature[:2]}'")
+            "expected the signature to be version 'v0' but got '{}'".format(slack_signature[:2]))
 
     if abs(time() - timestamp) > 60 * 5:
         # The request timestamp is more than five minutes from local time.
         # It could be a replay attack, so let's ignore it.
         return False
 
-    sig_basestring = f"v0:{timestamp}:{body}"
+    sig_basestring = "v0:{}:{}".format(timestamp, body)
 
     my_signature = 'v0=' + hmac.new(
         slack_signing_secret.encode(),

@@ -29,7 +29,7 @@ def format_slack_mention(slack_id: str):
     >>> format_slack_mention('U5H9UR207')
     '<@U5H9UR207>'
     """
-    return f"<@{slack_id}>"
+    return "<@{}>".format(slack_id)
 
 
 def format_channel_link(name: str, channel_id: str):
@@ -40,7 +40,7 @@ def format_channel_link(name: str, channel_id: str):
     >>> format_channel_link('general', 'C024BE7LR')
     '<#C024BE7LR|general>'
     """
-    return f'<#{channel_id}|{name}>'
+    return '<#{}|{}>'.format(channel_id, name)
 
 
 def format_url(text, url):
@@ -51,7 +51,7 @@ def format_url(text, url):
     >>> format_url('my website', 'https://austinpray.com')
     '<my website|https://austinpray.com>'
     """
-    return f'<{slack_escape(text)}|{url}>'
+    return '<{}|{}>'.format(slack_escape(text), url)
 
 
 def extract_mentions(text: str) -> List[str]:
