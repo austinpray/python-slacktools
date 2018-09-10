@@ -17,7 +17,7 @@ A toolbelt for working with the various `Slack APIs`_ in python.
 Features
 --------
 
-- `Authorization utils`_ to verify |X-Slack-Signature|_
+- `Authorization utils`_ to verify ``X-Slack-Signature``
 - `Message text utils`_ to do things like:
     - Format slack control sequences like ``<@USERIDXX>`` and ``<text|url>``
       with proper escaping
@@ -50,8 +50,6 @@ In the Wild
 .. _the docs: https://python-slacktools.readthedocs.io
 .. _API documentation: https://python-slacktools.readthedocs.io/en/latest/api.html
 
-.. |X-Slack-Signature| replace:: ``X-Slack-Signature``
-.. _X-Slack-Signature: https://api.slack.com/docs/verifying-requests-from-slack
 .. _Authorization utils: https://python-slacktools.readthedocs.io/en/latest/api.html#module-slacktools.authorization
 .. _Message text utils: https://python-slacktools.readthedocs.io/en/latest/api.html#module-slacktools.message
 .. _Message sending functions: https://python-slacktools.readthedocs.io/en/latest/api.html#module-slacktools.chat
