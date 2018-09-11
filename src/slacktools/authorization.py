@@ -8,10 +8,11 @@ class SignatureVersionException(ValueError):
     pass
 
 
-def verify_signature(slack_signing_secret: str,
-                     timestamp: int,
+def verify_signature(signing_secret: str,
+                     request_timestamp: int,
                      body: str,
-                     slack_signature: str):
+                     signature: str,
+                     current_timestamp: int = None) -> bool:
     """
     Verifies a signature from X-Slack-Signature and X-Slack-Request-Timestamp
 
@@ -24,29 +25,33 @@ def verify_signature(slack_signing_secret: str,
     :raises: SignatureVersionException if the signature version is something other than v0
     """
 
-    if not slack_signing_secret:
+    if not signing_secret:
         raise ValueError('slack_signing_secret not provided')
-    if not timestamp or not isinstance(timestamp, int):
+    if not request_timestamp or not isinstance(request_timestamp, int):
         raise ValueError('timestamp is not good int')
     if not body:
         raise ValueError('body not provided')
-    if not slack_signature:
+    if not signature:
         raise ValueError('signature not provided')
-    if not slack_signature.startswith('v0'):
+    if not signature.startswith('v0'):
         raise SignatureVersionException(
-            "expected the signature to be version 'v0' but got '{}'".format(slack_signature[:2]))
+            "expected the signature to be version 'v0' but got '{}'".format(signature[:2]))
 
-    if abs(time() - timestamp) > 60 * 5:
+    if current_timestamp is None:
+        current_timestamp = int(time())
+
+    if abs(current_timestamp - request_timestamp) > 60 * 5:
         # The request timestamp is more than five minutes from local time.
         # It could be a replay attack, so let's ignore it.
         return False
 
-    sig_basestring = "v0:{}:{}".format(timestamp, body)
+    return hmac.compare_digest(make_signature(signing_secret, current_timestamp, body), signature)
 
-    my_signature = 'v0=' + hmac.new(
-        slack_signing_secret.encode(),
+
+def make_signature(signing_secret: str, request_timestamp: int, body: str) -> str:
+    sig_basestring = "v0:{}:{}".format(request_timestamp, body)
+    return 'v0=' + hmac.new(
+        signing_secret.encode(),
         sig_basestring.encode(),
         sha256
     ).hexdigest()
-
-    return hmac.compare_digest(my_signature, slack_signature)

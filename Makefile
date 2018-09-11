@@ -21,7 +21,7 @@ else
 DOCKER_VOLUMES =  -v $(shell pwd):/app
 DOCKER_VOLUMES += -v /app/.eggs
 DOCKER_VOLUMES += -v /app/.pytest_cache
-DOCKER_VOLUMES += -v /app/.slacktools.egg-info
+DOCKER_VOLUMES += -v /app/slacktools.egg-info
 endif
 
 test-%:

@@ -72,7 +72,6 @@ Roadmap
 
 - Wider python support? This lib only `supports python 3 <.travis.yml>`_ right
   now. However, if someone needs it, I can add python 2 compatibility.
-- 100% test coverage
 - Friendly message builder API?
 - Build deep links into clients
 
