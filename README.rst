@@ -3,7 +3,7 @@ python-slacktools
 
 A toolbelt for working with the various `Slack APIs`_ in python.
 
-|Build Status| |Documentation Status| |PyPI - Version| |PyPI - Python Version|
+|Documentation Status| |Build Status| |Code Coverage| |PyPI - Version| |PyPI - Python Version|
 
 .. |Build Status| image:: https://travis-ci.com/austinpray/python-slacktools.svg?branch=master
     :target: https://travis-ci.com/austinpray/python-slacktools
@@ -13,6 +13,8 @@ A toolbelt for working with the various `Slack APIs`_ in python.
     :target: https://pypi.org/project/slacktools/
 .. |PyPI - Python Version| image:: https://img.shields.io/pypi/pyversions/Django.svg
     :target: https://pypi.org/project/slacktools/
+.. |Code Coverage| image:: https://codecov.io/gh/austinpray/python-slacktools/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/austinpray/python-slacktools
 
 Features
 --------
