@@ -49,4 +49,6 @@ setup(name='slacktools',
       packages=find_packages(exclude=['docs', 'tests']),
       setup_requires=["pytest-runner"],
       tests_require=["pytest", "pytest-cov"],
-      install_requires=["typing"])
+      install_requires=[
+          "typing ; python_version<'3.5'"
+      ])
