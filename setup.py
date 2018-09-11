@@ -25,7 +25,7 @@ def find_version(*file_paths):
 
 
 setup(name='slacktools',
-      version=find_version('slacktools', 'version.py'),
+      version=find_version('src', 'slacktools', 'version.py'),
       description='Toolbelt for Slack API clients for Web API and RTM API',
       long_description=long_description,
       url='https://github.com/austinpray/python-slacktools',
@@ -47,6 +47,6 @@ setup(name='slacktools',
       ],
       keywords='slack slack-web slack-rtm slacktools chat chatbots bots chatops',
       packages=find_packages(exclude=['docs', 'tests']),
-      install_requires=[
-          # ayy
-      ])
+      setup_requires=["pytest-runner"],
+      tests_require=["pytest", "pytest-cov"],
+      install_requires=["typing"])

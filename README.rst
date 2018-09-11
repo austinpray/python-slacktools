@@ -16,6 +16,20 @@ A toolbelt for working with the various `Slack APIs`_ in python.
 .. |Code Coverage| image:: https://codecov.io/gh/austinpray/python-slacktools/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/austinpray/python-slacktools
 
+
+Install
+-------
+
+Install slacktools with `PyPI <https://pypi.python.org/pypi>`_
+
+.. code-block:: bash
+
+    pip install slacktools
+
+This library is tested against Python 3.4+. `Open an issue`__ if you need this library to work on an older version.
+
+__ https://github.com/austinpray/python-slacktools/issues/new
+
 Features
 --------
 
@@ -29,8 +43,29 @@ Features
   and improve testability
 - `Silly stuff`_
 
-
 Check out `the docs`_ for more info and `API documentation`_.
+
+Tests
+-----
+
+Running the tests is simple enough:
+
+.. code-block:: bash
+
+    python setup.py test
+
+Or just ``pytest`` will do the trick. This will run the tests in the ``tests/``
+directory as well as as bunch of docstring tests in the ``src/`` directory.
+
+The Makefile also has some good test commands that will spin up a docker container:
+
+- ``make test`` will run the tests in python 3.7.
+- ``make test-all`` will run a series of tests from python 3.7 down to 3.4.
+- ``make test-{{PY_VERSION}}`` where ``PY_VERSION`` can be `any tagged version
+  of the official python docker image`__ will run tests under that python
+  version. Ex: ``make test-3.5`` will run under Python 3.5.
+
+__ https://hub.docker.com/_/python/
 
 Roadmap
 -------
